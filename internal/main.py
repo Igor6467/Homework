@@ -15,7 +15,7 @@ pygame.display.set_caption("Моя игра")
 
 p = resource_path("assets/men.png")
 
-player = Player(p, 400, 300, 7, 100, 150, 100, 15)
+player = Player(p, 400, 300, 7, 90, 150, 100, 15)
 timer = pygame.time.Clock()
 game = True
 
@@ -27,13 +27,13 @@ while game:
     keys = pygame.key.get_pressed()
     player.reset(window)
 
-    if keys[pygame.K_d]:
+    if keys[pygame.K_d] and player.rect.x <= 1100:
         player.step_right()
-    if keys[pygame.K_a]:
+    if keys[pygame.K_a] and player.rect.x >= 10:
         player.step_left()
-    if keys[pygame.K_w]:
+    if keys[pygame.K_w] and player.rect.y >= 10:
         player.step_up()
-    if keys[pygame.K_s]:
+    if keys[pygame.K_s] and player.rect.y <= 740:
         player.step_down()
 
     timer.tick(60)
